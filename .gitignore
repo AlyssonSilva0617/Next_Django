@@ -1,0 +1,55 @@
+# .gitignore for a monorepo (Next.js frontend + Django backend)
+
+# Python / Django
+######################
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+env/
+venv/
+*.db
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.coverage
+*.coveragerc
+# Django migrations
+**/migrations/*.pyc
+
+# Local environment settings
+.env
+
+# Django static and media files
+/static/
+media/
+
+# Node.js / Next.js
+######################
+# Dependency directories
+node_modules/
+.next/
+out/
+
+# Build output
+*.log
+
+# Next.js environment settings
+/.env.local
+/.env.development
+/.env.production
+
+# OS files
+######################
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+*.swp
