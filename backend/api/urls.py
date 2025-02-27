@@ -1,10 +1,8 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import ItemViewSet
+# api/urls.py
 
-router = DefaultRouter()
-router.register(r'items', ItemViewSet)
+from django.urls import path
+from .views import get_items
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('items/', get_items, name='get_items'),  # Make sure this matches the URL you're accessing
 ]
