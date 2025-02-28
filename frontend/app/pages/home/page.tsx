@@ -1,10 +1,21 @@
 // pages/home.tsx
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from '../../redux/store';
+import { fetchCategories } from '../../redux/categoriesSlice';
 import Sidebar from '../../components/Sidebar';
 import Content from '../../components/Content';
 
 const HomePage = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { categories, loading, error } = useSelector(
+      (state: RootState) => state.categories
+    );
+
+    useEffect(() => {
+      dispatch(fetchCategories());
+    }, [dispatch]);
     const [notes, setNotes] = useState([
         { id: 1, title: "Meeting Notes", color: "#FF5733" },
         { id: 2, title: "Ideas", color: "#33FF57" },

@@ -3,9 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Item
-from .models import Category
 from .serializers import ItemSerializer
-from .serializers import CategorySerializer
 
 @api_view(['GET'])
 def get_items(request):
@@ -47,20 +45,9 @@ def delete_item(request, pk):
 
 @api_view(['GET'])
 def get_categories(request):
-    categories = Category.objects.all()  # Fetch all categories
-    serializer = CategorySerializer(categories, many=True)  # Serialize the categories
-    return Response(serializer.data) 
-
-def create_categories():
-    categories = ['Random Thouthts', 'University', 'Personal']
-
-    for category_name in categories:
-        # Use get_or_create to ensure no duplicate categories are added
-        category, created = Category.objects.get_or_create(name=category_name)
-        if created:
-            print(f"Created: {category_name}")
-        else:
-            print(f"Already exists: {category_name}")
-
-# Call this function wherever you need to insert the categories
-create_categories()
+    categories = [
+        { 'id': 1, 'title': "Meeting Notes", 'color': "#FF5733" },
+        { 'id': 2, 'title': "Ideas", 'color': "#33FF57" },
+        { 'id': 3, 'title': "Shopping List", 'color': "#3357FF" },
+    ]
+    return Response(categories) 
