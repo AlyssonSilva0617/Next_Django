@@ -21,16 +21,13 @@ This project is a full-stack web application built with **Django/Django Rest Fra
 
 ### **Tools Used:**
 - **Postman** – API testing and documentation.
-- **Vercel** – Deployment for the frontend.
-- **Render/Heroku** – Deployment for the backend.
 - **GitHub** – Version control and collaboration.
-- **FFmpeg (Optional)** – If handling media processing.
+- **VS code** - Develop for project
 
 ---
 
 ## 📌 Features Implemented
 
-- ✅ **User Authentication (JWT/Auth0)** – Secure login and signup.
 - ✅ **CRUD Operations** – Create, read, update, and delete functionalities.
 - ✅ **AI-Powered Enhancements** – Improved efficiency using AI tools.
 - ✅ **Responsive UI** – Optimized for mobile and desktop users.
@@ -47,47 +44,90 @@ This project is a full-stack web application built with **Django/Django Rest Fra
 | **GitHub Copilot** | AI-assisted coding for faster development. |
 | **ChatGPT (GPT-4)** | Debugging, code refactoring, and generating API documentation. |
 | **Postman AI** | Auto-generating test cases and API endpoints. |
-| **DeepCode** | AI-powered static analysis for bug prevention. |
 | **Figma AI Plugins** | Auto-generating UI components. |
 
 ---
 
-## 📤 Deployment
+#### Backend(Django)
 
-### **Frontend (Next.js) Deployment**
-1. Connect the GitHub repo to **Vercel**.
-2. Run the deployment command:
+## Getting Started
+
+### Prerequisites
+
+- Python 3.x
+- pip (for installing Python dependencies)
+- A virtual environment tool (e.g., venv)
+
+### Setup Instructions
+
+1. Create a virtual environment:
+
+    ```bash
+    python -m venv venv
+    ```
+
+2. Activate the virtual environment:
+
+    - On Windows:
+
+      ```bash
+      venv\Scripts\activate
+      ```
+
+    - On macOS/Linux:
+
+      ```bash
+      source venv/bin/activate
+      ```
+
+3. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Set up the database (assuming you are using SQLite):
+
+    ```bash
+    python manage.py migrate
+    ```
+
+5. Create a superuser (optional, for admin access):
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+6. Run the server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+Your server should now be running at `http://localhost:8000/`.
+
+------
+
+#### Frontend(NextJs)
+## ⚙️ Setup & Installation
+
+1. **Install Dependencies:**
    ```sh
-   vercel --prod
+   npm install
+   # or
+   yarn install
    ```
 
-### **Backend (Django) Deployment**
-1. Deploy on **Render/Heroku**.
-2. Run database migrations:
+2. **Run the Development Server:**
    ```sh
-   python manage.py migrate
+   npm run dev
+   # or
+   yarn dev
    ```
-3. Start the server:
+3. **Build for Production:**
    ```sh
-   gunicorn backend.wsgi
+   npm run build
+   npm run start
    ```
 
----
-
-## 📹 Demo Video
-_A 5-minute walkthrough video showcasing the app’s features is included in the repository._
-
----
-
-## 📌 Future Enhancements
-- 🔹 **AI-powered search** (using OpenAI API)
-- 🔹 **Real-time notifications**
-- 🔹 **Improved UI animations**
-
----
-
-## 🏆 Final Thoughts
-This project was built under a **72-hour constraint**, focusing on efficiency and best practices. AI tools significantly improved productivity, from **code generation** to **debugging** and **testing**.
-
-_If you have any questions or feedback, feel free to reach out!_ 🚀
-
+Your App should now be running at `http://localhost:3000/`.
