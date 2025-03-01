@@ -16,7 +16,6 @@ const LoginForm = () => {
             setError("Please fill in all fields");
             return;
         }
-
         setError(""); // Clear errors if form is valid
     };
 

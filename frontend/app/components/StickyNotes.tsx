@@ -13,7 +13,33 @@ const StickyNote = () => {
   );
   const memoizedNotes = useMemo(() => notes, [notes]);
   const setUpdateNote = (note: any) => {
-      dispatch(setNote(note));
+    dispatch(setNote(note));
+  }
+  function formatDate(timestamp: string): string {
+    const date = new Date(timestamp);
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1); // Get yesterday's date
+    // Check if the date is today
+    if (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    ) {
+      return "Today";
+    }
+
+    // Check if the date is yesterday
+    if (
+      date.getDate() === yesterday.getDate() &&
+      date.getMonth() === yesterday.getMonth() &&
+      date.getFullYear() === yesterday.getFullYear()
+    ) {
+      return "Yesterday";
+    }
+
+    // Format: "1 March"
+    return new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long" }).format(date);
   }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
@@ -26,16 +52,17 @@ const StickyNote = () => {
             }}
           >
             {/* Top Section */}
-            <div className="flex justify-between text-sm mb-4">
-              <span className="font-semibold">{note.updated_at}</span>
-              <span className="font-semibold">{note.category}</span>
+            <div className="flex justify-start text-sm mb-4 text-[20px]">
+              <span className="font-semibold">{formatDate(note.updated_at)}</span>
+              <span className="font-medium ml-5">{note.category}</span>
             </div>
 
             {/* Bottom Section */}
             <div className="flex flex-col justify-between h-full">
               {/* Title */}
               <div className="font-bold text-lg">
-                {note.title}{/* Content */}
+                <span className="text-[30px]">{note.title}</span>
+                {/* Content */}
                 <div className="text-sm mt-2 overflow-y-auto font-medium">
                   {note.content}
                 </div>

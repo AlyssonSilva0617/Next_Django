@@ -11,7 +11,6 @@ import Axios from 'axios';
 const CloseButton = () => {
   const dispatch = useDispatch();
   const { note } = useSelector((state: RootState) => state.notes);  // Access the note from the Redux store
-
   // Handle saving the note
   const handleSaveNotes = () => {
     

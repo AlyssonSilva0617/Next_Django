@@ -11,14 +11,13 @@ const SelectCategory = ( ) => {
   const { note } = useSelector(
     (state: RootState) => state.notes
   );
-  
+
   const { categories } = useSelector(
     (state: RootState) => state.categories
   );
 
   const [isOpen, setIsOpen] = useState(false);             // State for dropdown visibility
   const dispatch = useDispatch();
-
 
   const handleSelect = (title: string, color: string) => {
     dispatch(setCategory(title));
@@ -32,7 +31,7 @@ const SelectCategory = ( ) => {
         <div className="relative inline-block w-64">
           {/* Dropdown Button */}
           <button
-            className="flex items-center justify-between w-full px-4 py-2 text-white rounded-md"
+            className="flex items-center justify-between w-full px-4 py-2 border border-black rounded-md"
             onClick={() => setIsOpen(!isOpen)} // Toggle dropdown visibility
           >
             { <span className={`w-4 h-4 rounded-full bg-${note.color}-100`} style={{backgroundColor: note.color}}></span>}

@@ -24,8 +24,8 @@ input, textarea {
 button {
   margin: 5px;
   padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
 }

@@ -12,12 +12,7 @@ const NoteInputForm = ({ onSave }: any) => {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
   const [lastEdited, setLastEdited] = useState(note.updated_at);
-  const [bgcolor, setBgcolor] = useState(note.color);
   const dispatch = useDispatch();
-
-  // const { setedColor } = useSelector(
-  //   (state: RootState) => state.notes
-  // );
 
   const updateTimestamp = () => {
     const now = new Date();
