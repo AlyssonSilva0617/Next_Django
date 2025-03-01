@@ -47,7 +47,7 @@ const NoteInputForm = ({ onSave }: any) => {
   return (
     <div
       className={`flex flex-col rounded-3xl w-full mt-4 p-4 bg-opacity-25`}
-      style={{ height: "calc(100vh - 130px)", backgroundColor: note.color}}
+      style={{ height: "calc(100vh - 130px)", backgroundColor: note.color }}
     >
       {/* Last Edited Time */}
       {lastEdited && (
@@ -65,8 +65,8 @@ const NoteInputForm = ({ onSave }: any) => {
           setTitle(e.target.value);
           handleInputChange();
         }}
-        className={`p-4 mb-4 border-b-2 border-gray-300 rounded-md w-full text-lg bg-${note.color}-100  ml-0`}
-        style={{backgroundColor: note.color}}
+        className={`p-4 mb-4 border-none rounded-md w-full text-lg bg-${note.color}-100 ml-0 focus:outline-none focus:ring-0`}
+        style={{ backgroundColor: note.color }}
       />
 
       {/* Note Content */}
@@ -77,8 +77,8 @@ const NoteInputForm = ({ onSave }: any) => {
           setContent(e.target.value);
           handleInputChange();
         }}
-        className={`p-4 mb-4 h-full border-2 border-gray-300 rounded-md w-full resize-none bg-${note.color}-100 ml-0`}
-        style={{backgroundColor: note.color}}
+        className={`p-4 mb-4 h-full border-none rounded-md w-full resize-none bg-${note.color}-100 ml-0 focus:outline-none focus:ring-0 focus:shadow-md focus:bg-${note.color}-200`}
+        style={{ backgroundColor: note.color }}
       />
     </div>
   );

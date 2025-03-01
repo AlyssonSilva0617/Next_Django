@@ -42,11 +42,11 @@ const StickyNote = () => {
     return new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long" }).format(date);
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-5">
       {/* <p>{title}</p> */}
       {memoizedNotes.map((note, index) => (
         <Link href="/pages/new-note" key={index}>
-          <div className={`p-4 rounded-lg shadow-lg h-[300px] max-w-sm mx-auto my-4 w-full bg-${note.color}-100`} key={index} style={{ backgroundColor: note.color }}
+          <div className={`p-4 rounded-lg shadow-lg h-[300px] max-w-md mx-auto my-4 w-full border-2 rounded-lg border-${note.color}-800 bg-${note.color}-100`} key={index} style={{ backgroundColor: note.color }}
             onClick={() => {
               setUpdateNote(note);
             }}

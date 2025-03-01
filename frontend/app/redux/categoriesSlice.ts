@@ -22,11 +22,12 @@ const initialState: CategoriesState = {
     error: null,
 };
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 // Async thunk for fetching categories from Django API
 export const fetchCategories = createAsyncThunk(
     'categories/fetchCategories',
     async () => {
-        const response = await fetch('http://localhost:8000/api/categories/'); // Change to your Django API endpoint
+        const response = await fetch(`${API_BASE_URL}/categories/`); // Change to your Django API endpoint
         if (!response.ok) {
             throw new Error('Failed to fetch categories');
         }

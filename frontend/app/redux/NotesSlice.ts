@@ -24,11 +24,12 @@ const initialState: NoteState = {
     error: null,
 };
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 // Async thunk for fetching notes from Django API
 export const fetchNotes = createAsyncThunk(
     'notes/fetchNotes',
     async () => {
-        const response = await fetch('http://localhost:8000/api/items/'); // Change to your Django API endpoint
+        const response = await fetch(`${API_BASE_URL}/items/`); // Change to your Django API endpoint
         if (!response.ok) {
             throw new Error('Failed to fetch notes');
         }
@@ -39,7 +40,7 @@ export const fetchNotes = createAsyncThunk(
 export const fetchNote = createAsyncThunk(
     'notes/fetchNote',
     async (category: string, { rejectWithValue }) => {
-        const response = await fetch(`http://localhost:8000/api/items/${category}/`); // Change to your Django API endpoint
+        const response = await fetch(`${API_BASE_URL}/items/${category}/`); // Change to your Django API endpoint
         if (!response.ok) {
             throw new Error('Failed to fetch notes');
         }
