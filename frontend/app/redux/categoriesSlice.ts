@@ -5,6 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 interface Category {
     id: number;
     title: string,
+    total_items: number,
     color: string;
 }
 

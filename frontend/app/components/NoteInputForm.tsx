@@ -47,7 +47,7 @@ const NoteInputForm = ({ onSave }: any) => {
   return (
     <div
       className={`flex flex-col rounded-3xl w-full mt-4 p-4 bg-opacity-25`}
-      style={{ height: "calc(100vh - 120px)", backgroundColor: note.color}}
+      style={{ height: "calc(100vh - 130px)", backgroundColor: note.color}}
     >
       {/* Last Edited Time */}
       {lastEdited && (

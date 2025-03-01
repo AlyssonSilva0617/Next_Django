@@ -10,9 +10,6 @@ import Content from '../../components/Content';
 
 const HomePage = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { categories } = useSelector(
-      (state: RootState) => state.categories
-    );
 
     const [selectedNote, setSelectedNote] = useState('');
     useEffect(() => {
@@ -32,7 +29,7 @@ const HomePage = () => {
     return (
         <div className="flex min-h-screen bg-yellow-2000">
             {/* Left Section: Notes List */}
-            <Sidebar notes={categories} onSelect={handleNoteClick} />
+            <Sidebar onSelect={handleNoteClick} />
             {/* Right Section: Sticky Notes */}
             <Content />
         </div>
