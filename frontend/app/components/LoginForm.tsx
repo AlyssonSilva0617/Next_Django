@@ -22,7 +22,7 @@ export default function LoginForm() {
     return (
         <div className="w-full max-w-md p-5 rounded-xl shadow-lg">
             <img
-                src="../images/img_group_1_1.png"
+                src="https://s3-alpha-sig.figma.com/img/fa04/8834/feb921cb079f2f3d87d11cff6a71497f?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=pm~NqHaSLkHi5efTFHAQ6JFOtXQmTv8VSqffnt9aI6cg8KkpVs~Y~NER~3vi9pLWfARI~843RdWhXSjC1JjC6ZO1tRjwAaV14ZXCAwUwD-zMPRDCzNIjFLvuXy8zTDSz06GSPd~BQBZ1kVInJ7KvbRi1-uxvP55LaotSmXiTVrVKvGSoYYiOHqQwnCRg0ZkLs4KOuxQuRKLulHcrwb4Uj5yss24l3Y1mcGegh8tLH6yw8dpgevfoHfM7~eWrltEYU6SLWoy2cClOFlJ9RnHLOHW9Ik1NbmquQLIAlvwmjusjR21wpbkZFPPK56PufA7v12v9pQfIiCkAPz5pSGIlcg__"
                 alt="Logo"
                 className="w-[80px] mx-auto mb-4"
             />

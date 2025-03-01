@@ -22,7 +22,7 @@ const LoginForm = () => {
     return (
         <div className="w-full max-w-md p-5 rounded-xl shadow-lg w-[500px]">
             <img
-                src="../images/cat.png"
+                src="https://s3-alpha-sig.figma.com/img/4cb9/853c/35adef68099d34b3c252f364ca101c2f?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=p0j8CST1Xa3Ucx0ITyr8gF4046b3thpO39IK~kSdTPUsEqNxRNIsKo0WIrwmwRQ13GDlowXou4ggbp2aA1ZlXBHqiEfejnJMpkMiV8Jc1P3C0Y9YrFNY6dfI6sBUwxTt13JUZN31XgGErXF0ZptecaP2kq2mYHVu6NWYPcugk~yINmRdVWq~SYhX2sDMZLfK8j1g9~x670z0d~WQMtJXystBMjv7lUSp1iPG~SYB~nM9e8s2j0Fm5n9zqLKswhIx4nCEzrXQKVc1geijEfccQDqT7mLPChxlVYBNevhbfEWcMv1n26nuFtxsEiDuRFt2Xe-NXvaOOZB7UFOTrJc7wg__"
                 alt="Logo"
                 className="w-[100px] mx-auto mb-4"
             />
