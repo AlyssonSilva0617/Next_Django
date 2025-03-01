@@ -46,8 +46,18 @@ def delete_item(request, pk):
 @api_view(['GET'])
 def get_categories(request):
     categories = [
-        { 'id': 1, 'title': "Meeting Notes", 'color': "#FF5733" },
-        { 'id': 2, 'title': "Ideas", 'color': "#33FF57" },
-        { 'id': 3, 'title': "Shopping List", 'color': "#3357FF" },
+        { 'id': 1, 'title': "University", 'color': " #ccffcc" },
+        { 'id': 2, 'title': "Shopping List", 'color': "#ffffcc" },
+        { 'id': 3, 'title': "Ideas", 'color': "#ccccff" },
     ]
     return Response(categories) 
+
+@api_view(['GET'])
+def get_items_condition(request, pk):
+    items = Item.objects.all()
+
+    if pk:
+        # Filter items where category matches exactly 'University'
+        items = items.filter(category=pk)
+    serializer = ItemSerializer(items, many=True)
+    return Response(serializer.data)

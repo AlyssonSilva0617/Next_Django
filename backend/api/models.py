@@ -5,6 +5,7 @@ class Item(models.Model):
     category = models.CharField(max_length=100)
     title = models.CharField(max_length=255)
     content = models.TextField()
+    color = models.CharField(max_length=10)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

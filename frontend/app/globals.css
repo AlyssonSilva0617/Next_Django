@@ -31,7 +31,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  /* background-color: #45a049; */
 }
 
 ul {
@@ -44,4 +44,13 @@ li {
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
+}
+
+option {
+  display: flex;
+  align-items: center;
+}
+.option-circle {
+  display: flex;
+  align-items: center;
 }

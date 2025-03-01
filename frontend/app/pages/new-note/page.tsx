@@ -1,14 +1,17 @@
 // pages/new-note/page.tsx
 'use client';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import SelectCategory from '../../components/SelectCategory';
 import CloseButton from '../../components/CloseButton';
 import NoteInputForm from '../../components/NoteInputForm';
 import UpdatedTime from '../../components/UpdatedTime';
 
 const NewNotePage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [categories] = useState(['Personal', 'Work', 'Study']);
+  const { categories } = useSelector(
+    (state: RootState) => state.categories
+  );
   const [note, setNote] = useState<any>(null);
 
   const handleSaveNote = (newNote: any) => {
@@ -24,14 +27,10 @@ const NewNotePage = () => {
       <div className="flex flex-col">
         
         {/* Category Selection */}
-        <SelectCategory
-          categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+        <SelectCategory />
 
         {/* Note Input Form */}
-        <NoteInputForm onSave={handleSaveNote} />
+        <NoteInputForm />
 
         {/* Show Last Edited Time */}
         {note && <UpdatedTime lastEdited={note.lastEdited} />}

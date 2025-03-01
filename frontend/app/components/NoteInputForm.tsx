@@ -1,21 +1,23 @@
 // components/NoteInputForm.tsx
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store';
+import { setTitle as setNoteTitle, setContent as setNoteContent, setTime } from '../redux/setenvSlice';
 
 const NoteInputForm = ({ onSave }: any) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [lastEdited, setLastEdited] = useState<string | null>(null);
+  const { note } = useSelector(
+    (state: RootState) => state.notes
+  );
+  const [title, setTitle] = useState(note.title);
+  const [content, setContent] = useState(note.content);
+  const [lastEdited, setLastEdited] = useState(note.updated_at);
+  const [bgcolor, setBgcolor] = useState(note.color);
+  const dispatch = useDispatch();
 
-  const handleSave = () => {
-    const currentDate = new Date();
-    const note = {
-      title,
-      content,
-      lastEdited: currentDate,
-    };
-    onSave(note); // Call the function passed from the parent to save the note
-  };
+  // const { setedColor } = useSelector(
+  //   (state: RootState) => state.notes
+  // );
 
   const updateTimestamp = () => {
     const now = new Date();
@@ -35,10 +37,22 @@ const NoteInputForm = ({ onSave }: any) => {
     updateTimestamp();
   };
 
+  useEffect(() => {
+    dispatch(setNoteTitle(title));
+  }, [title]);
+
+  useEffect(() => {
+    dispatch(setNoteContent(content));
+  }, [content]);
+
+  useEffect(() => {
+    dispatch(setTime(new Date().toISOString()));
+  }, [lastEdited]);
+
   return (
     <div
-      className="flex flex-col bg-yellow-100 rounded-3xl w-full mt-4 p-4"
-      style={{ height: "calc(100vh - 120px)" }}
+      className={`flex flex-col rounded-3xl w-full mt-4 p-4 bg-opacity-25`}
+      style={{ height: "calc(100vh - 120px)", backgroundColor: note.color}}
     >
       {/* Last Edited Time */}
       {lastEdited && (
@@ -56,7 +70,8 @@ const NoteInputForm = ({ onSave }: any) => {
           setTitle(e.target.value);
           handleInputChange();
         }}
-        className="p-4 mb-4 border-b-2 border-gray-300 rounded-md w-full text-lg bg-yellow-100"
+        className={`p-4 mb-4 border-b-2 border-gray-300 rounded-md w-full text-lg bg-${note.color}-100  ml-0`}
+        style={{backgroundColor: note.color}}
       />
 
       {/* Note Content */}
@@ -67,7 +82,8 @@ const NoteInputForm = ({ onSave }: any) => {
           setContent(e.target.value);
           handleInputChange();
         }}
-        className="p-4 mb-4 h-full border-2 border-gray-300 rounded-md w-full resize-none bg-yellow-100"
+        className={`p-4 mb-4 h-full border-2 border-gray-300 rounded-md w-full resize-none bg-${note.color}-100 ml-0`}
+        style={{backgroundColor: note.color}}
       />
     </div>
   );
