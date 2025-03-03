@@ -13,9 +13,19 @@ const CloseButton = () => {
   const dispatch = useDispatch();
   const { note } = useSelector((state: RootState) => state.notes);  // Access the note from the Redux store
   // Handle saving the note
-  
+
   const handleSaveNotes = () => {
-    if(!note.category || !note.title || !note.content) return;
+    if (!note.category || !note.title || !note.content) {
+      dispatch(setNote({
+        id: 0,
+        category: '',
+        title: '',
+        content: '',
+        updated_at: '', // Default to the current date
+        color: ''
+      }))
+      return;
+    }
     if (note.id == 0 || !note.id) {
       // Create new note if id is 0
       Axios.post(`${API_BASE_URL}/items/create/`, {

@@ -73,7 +73,8 @@ def get_items_condition(request, pk):
 
     if pk:
         # Filter items where category matches exactly 'University'
-        items = items.filter(category=pk)
+        if pk != "AllCategories":
+            items = items.filter(category=pk)
     items = items.order_by('-updated_at') 
     serializer = ItemSerializer(items, many=True)
     return Response(serializer.data)
