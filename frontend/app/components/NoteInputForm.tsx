@@ -1,6 +1,6 @@
 // components/NoteInputForm.tsx
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { setTitle as setNoteTitle, setContent as setNoteContent, setTime } from '../redux/setenvSlice';
@@ -9,23 +9,14 @@ const NoteInputForm = ({ onSave }: any) => {
   const { note } = useSelector(
     (state: RootState) => state.notes
   );
-  const [title, setTitle] = useState(note.title);
+  const [title, setTitle] = useState(note.title || "");
   const [content, setContent] = useState(note.content);
   const [lastEdited, setLastEdited] = useState(note.updated_at);
   const dispatch = useDispatch();
 
   const updateTimestamp = () => {
     const now = new Date();
-    setLastEdited(
-      `Last Edited: ${now.toLocaleString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-      })}`
-    );
+    setLastEdited(new Date().toISOString());
   };
 
   const handleInputChange = () => {
@@ -42,7 +33,22 @@ const NoteInputForm = ({ onSave }: any) => {
 
   useEffect(() => {
     dispatch(setTime(new Date().toISOString()));
-  }, [lastEdited]);  
+  }, [lastEdited]);
+
+  const setUpdated_date = useMemo(() => {
+    let date = new Date(lastEdited);
+    const formattedDate = date.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+      timeZone: "UTC" // Adjust based on your timezone preference
+    });
+    return formattedDate
+  }, [lastEdited])
 
   return (
     <div
@@ -52,7 +58,7 @@ const NoteInputForm = ({ onSave }: any) => {
       {/* Last Edited Time */}
       {lastEdited && (
         <div className="absolute right-4 text-sm text-gray-600 ml-8 mr-20 mt-[-12]">
-          {lastEdited}
+          {setUpdated_date}
         </div>
       )}
 

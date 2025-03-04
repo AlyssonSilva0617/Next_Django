@@ -51,7 +51,7 @@ def get_categories(request):
     grouped_items = Item.objects.values('category').annotate(total_items=Count('id'))
     print(grouped_items)
     categories = [
-        { 'id': 1, 'title': "University", 'color': " #ccffcc" },
+        { 'id': 1, 'title': "University", 'color': "#ccffcc" },
         { 'id': 2, 'title': "Shopping List", 'color': "#ffffcc" },
         { 'id': 3, 'title': "Ideas", 'color': "#ccccff" },
     ]

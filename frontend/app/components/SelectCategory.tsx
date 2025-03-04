@@ -32,7 +32,10 @@ const SelectCategory = ( ) => {
           {/* Dropdown Button */}
           <button
             className="flex items-center justify-between w-full px-4 py-2 border border-black rounded-md"
-            onClick={() => setIsOpen(!isOpen)} // Toggle dropdown visibility
+            onClick={() => {
+              if(!note.title)
+                setIsOpen(!isOpen)
+            }} // Toggle dropdown visibility
           >
             { <span className={`w-4 h-4 rounded-full bg-${note.color}-100`} style={{backgroundColor: note.color}}></span>}
             {note.category || 'Select Option'}

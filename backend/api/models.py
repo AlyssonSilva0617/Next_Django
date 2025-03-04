@@ -6,7 +6,7 @@ class Item(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     color = models.CharField(max_length=12)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField()
 
     def __str__(self):
         return self.title

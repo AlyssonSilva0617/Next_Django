@@ -2,28 +2,18 @@
 'use client';
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Link from "next/link";
 import { RootState } from '../redux/store';
-import { setNote } from '../redux/setenvSlice';
 import Axios from 'axios';
 
 const CloseButton = () => {
   const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const dispatch = useDispatch();
   const { note } = useSelector((state: RootState) => state.notes);  // Access the note from the Redux store
   // Handle saving the note
 
   const handleSaveNotes = () => {
     if (!note.category || !note.title || !note.content) {
-      dispatch(setNote({
-        id: 0,
-        category: '',
-        title: '',
-        content: '',
-        updated_at: '', // Default to the current date
-        color: ''
-      }))
       return;
     }
     if (note.id == 0 || !note.id) {
@@ -34,31 +24,13 @@ const CloseButton = () => {
         content: note.content,
         updated_at: new Date().toISOString(), // Default to the current date
         color: note.color,
-      }).then(res => {
-        // dispatch(setNote({
-        //   id: 0,
-        //   category: '',
-        //   title: '',
-        //   content: '',
-        //   updated_at: '', // Default to the current date
-        //   color: ''
-        // }))
       });
     } else {
       // Update existing note
       Axios.put(
         `${API_BASE_URL}/items/update/${note.id}/`,
         note
-      ).then(res => {
-        // dispatch(setNote({
-        //   id: 0,
-        //   category: '',
-        //   title: '',
-        //   content: '',
-        //   updated_at: '', // Default to the current date
-        //   color: ''
-        // }))
-      });
+      );
     }
   };
 
