@@ -9,11 +9,10 @@ const Sidebar = ({ onSelect }: { onSelect: (title: string) => void }) => {
   const { categories } = useSelector(
     (state: RootState) => state.categories
   );
-  console.log(categories);
-
+  
   return (
-    <div className="w-64 bg-gray-100 p-4 h-screen  bg-yellow-50">
-      <h2 className="text-lg font-semibold mb-4" onClick={() =>onSelect("AllCategories")}>All Categories</h2>
+    <div className="w-64 bg-gray-100 p-4 h-screen  bg-yellow-50 ">
+      <h2 className="text-lg font-semibold mb-4 hover:cursor-pointer" onClick={() =>onSelect("AllCategories")}>All Categories</h2>
       <ul>
         {categories.map((category) => (
           <SidebarItem key={category.id} title={category.title} color={category.color} total_items={category.total_items} onClick={() => onSelect(category.title)} />

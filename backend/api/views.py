@@ -72,9 +72,14 @@ def get_items_condition(request, pk):
     items = Item.objects.all()
 
     if pk:
-        # Filter items where category matches exactly 'University'
+        # If pk is not 'AllCategories', filter by category
         if pk != "AllCategories":
             items = items.filter(category=pk)
+
+    # If no items match, return a message indicating no results
+    if not items.exists():
+        return Response({"message": "No items found."}, status=404)
+    
     items = items.order_by('-updated_at') 
     serializer = ItemSerializer(items, many=True)
     return Response(serializer.data)

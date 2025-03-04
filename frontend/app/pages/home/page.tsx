@@ -19,7 +19,7 @@ const HomePage = () => {
 
     useEffect(() => {
       if(selectedNote)
-      dispatch(fetchNote(selectedNote));
+       dispatch(fetchNote(selectedNote));
     }, [selectedNote]);
 
     const handleNoteClick = (title: string) => {

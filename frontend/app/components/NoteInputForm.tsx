@@ -42,7 +42,7 @@ const NoteInputForm = ({ onSave }: any) => {
 
   useEffect(() => {
     dispatch(setTime(new Date().toISOString()));
-  }, [lastEdited]);
+  }, [lastEdited]);  
 
   return (
     <div
