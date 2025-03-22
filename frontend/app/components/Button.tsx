@@ -9,7 +9,7 @@ interface ButtonProps {
       <button
         type={type}
         onClick={onClick}
-        className="w-full py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition duration-200 ease-in-out"
+        className="w-full py-2 text-white bg-blue-500 hover:bg-blue-500 rounded-lg font-medium transition duration-200 ease-in-out"
       >
         {text}
       </button>
