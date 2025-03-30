@@ -21,7 +21,7 @@ export default function LoginForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!email || !password) {
-            setError("Please fill in all field");
+            setError("Please fill in all fields");
             return;
         }
         setError(""); // Clear errors if form is valid
