@@ -36,7 +36,7 @@ export default function LoginForm() {
             />
             <h2 className="text-2xl font-bold text-center text-gray-700">Yay, You're Back!</h2>
 
-            {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <InputField label="Email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
