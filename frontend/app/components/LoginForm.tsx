@@ -34,7 +34,7 @@ export default function LoginForm() {
                 alt="Logo"
                 className="w-[80px] mx-auto mb-4"
             />
-            <h2 className="text-2xl font-bold text-center text-gray-800">Yay, You're Back!</h2>
+            <h2 className="text-2xl font-bold text-center text-gray-700">Yay, You're Back!</h2>
 
             {error && <p className="text-red-400 text-sm text-center">{error}</p>}
 
